@@ -1,6 +1,6 @@
 {
   "name": "reactcountdowntimerclock",
-  "version": "1.0.1",
+  "version": "1.0.5",
   "description": "A simple react countdown timer",
   "main": "index.js",
   "scripts": {
@@ -19,15 +19,5 @@
   "bugs": {
     "url": "https://github.com/amitgouda/react-countdown-timer/issues"
   },
-  "homepage": "https://github.com/amitgouda/react-countdown-timer#readme",
-  "babel": {
-    "presets": [
-      "@babel/react",
-      "@babel/env"
-    ],
-    "plugins": [
-      "@babel/proposal-class-properties",
-      "@babel/plugin-transform-runtime"
-    ]
-  }
+  "homepage": "https://github.com/amitgouda/react-countdown-timer#readme"
 }

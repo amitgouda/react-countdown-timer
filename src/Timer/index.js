@@ -49,6 +49,6 @@ export default class Timer extends React.Component {
 
   render() {
     const time = this.serializeTimer(this.state.time);
-    return <>{this.props.children(time)}</>;
+    return <div>{this.props.children(time)}</div>;
   }
 }
