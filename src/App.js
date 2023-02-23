@@ -8,7 +8,7 @@ function App() {
   return (
     <div className="App">
       <Timer
-      initialTime={600000}
+      initialTime={1200000}
       onComplete={onComplete}
       >
         {({ noOfDays, noOfHours, noOfMins, noOfSecs }) => {

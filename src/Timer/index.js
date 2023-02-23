@@ -39,33 +39,11 @@ export default class Timer extends React.Component {
   }
 
   serializeTimer = (timerInMS) => {
-    let timerRef = timerInMS;
-
-    const msInADay = HR * MINS * SEC * MS;
-
-    const noOfDays = parseInt(timerInMS / msInADay) || 0;
-    if (noOfDays) {
-      timerInMS = timerRef - noOfDays * msInADay;
-    }
-    const msInAHour = MINS * SEC * MS;
-    const noOfHours = parseInt(timerInMS / msInAHour) || 0;
-    if (noOfHours) {
-      timerInMS = timerRef - noOfHours * msInAHour;
-    }
-
-    const msInAMin = SEC * MS;
-    const noOfMins = parseInt(timerInMS / msInAMin) || 0;
-    if (noOfMins) {
-      timerInMS = timerRef - noOfMins * msInAMin;
-    }
-
-    const noOfSecs = parseInt(timerRef / MS) % SEC || 0;
-
     return {
-      noOfDays,
-      noOfHours,
-      noOfMins,
-      noOfSecs,
+      noOfDays: Math.floor(timerInMS / (1000 * 60 * 60 * 24)),
+      noOfHours: Math.floor((timerInMS / (1000 * 60 * 60)) % 24),
+      noOfMins: Math.floor((timerInMS / 1000 / 60) % 60),
+      noOfSecs: Math.floor((timerInMS / 1000) % 60),
     };
   };
 
