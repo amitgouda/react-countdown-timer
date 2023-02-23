@@ -17,14 +17,14 @@ export default class Timer extends React.Component {
 
   componentDidMount() {
     this.intervalRef = setInterval(() => {
-      const remainingTime = this.state.time - 1000;
+      const remainingTime = this.state.time - MS;
       this.setState({ time: remainingTime });
 
-      if (remainingTime < 1000) {
+      if (remainingTime < MS) {
         if (this.props.onComplete) this.props.onComplete();
         this.clearTimer();
       }
-    }, 1000);
+    }, MS);
   }
 
   clearTimer = () => {
@@ -40,15 +40,15 @@ export default class Timer extends React.Component {
 
   serializeTimer = (timerInMS) => {
     return {
-      noOfDays: Math.floor(timerInMS / (1000 * 60 * 60 * 24)),
-      noOfHours: Math.floor((timerInMS / (1000 * 60 * 60)) % 24),
-      noOfMins: Math.floor((timerInMS / 1000 / 60) % 60),
-      noOfSecs: Math.floor((timerInMS / 1000) % 60),
+      noOfDays: Math.floor(timerInMS / (MS * SEC * MINS * HR)),
+      noOfHours: Math.floor((timerInMS / (MS * SEC * MINS)) % HR),
+      noOfMins: Math.floor((timerInMS / MS / SEC) % MINS),
+      noOfSecs: Math.floor((timerInMS / MS) % SEC),
     };
   };
 
   render() {
     const time = this.serializeTimer(this.state.time);
-    return <React.Fragment>{this.props.children(time)}</React.Fragment>;
+    return <>{this.props.children(time)}</>;
   }
 }
